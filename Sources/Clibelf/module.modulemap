@@ -1,0 +1,11 @@
+module ClibelfMac {
+    header "/usr/local/include/libelf/libelf.h"
+    link "libelf"
+    export *
+}
+
+module ClibelfLinux {
+    header "/usr/include/libelf/libelf.h"
+    link "linbelf"
+    export *
+}
