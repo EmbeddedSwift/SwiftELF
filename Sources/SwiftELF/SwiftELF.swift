@@ -1,5 +1,10 @@
+#if canImport(Darwin)
+import Darwin
 import ClibelfMac
-import Foundation
+#else
+import Glibc
+import ClibelfLinux
+#endif
 
 enum RuntimeError: Error {
     case initialization
