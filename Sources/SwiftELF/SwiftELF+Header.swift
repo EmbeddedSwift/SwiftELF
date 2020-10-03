@@ -26,6 +26,9 @@ public extension SwiftELF {
             throw RuntimeError.couldNotGetIdent
         }
         
+        // todo: this method should actually return the header in a
+        // useful format.
+        
         print("-- ELF Header Begin ---")
         print("e_ident", ehdr.pointee.e_ident)
         print("e_type", ehdr.pointee.e_type)
