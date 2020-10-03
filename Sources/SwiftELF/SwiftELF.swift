@@ -6,12 +6,6 @@ import Glibc
 import ClibelfLinux
 #endif
 
-public enum RuntimeError: Error {
-    case fileNotFound
-    case invalidVersion
-    case initialization
-}
-
 public enum Kind {
     case none, ar, coff, elf, num
 }
