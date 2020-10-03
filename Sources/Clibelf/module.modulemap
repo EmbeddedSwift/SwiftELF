@@ -5,7 +5,7 @@ module ClibelfMac {
 }
 
 module ClibelfLinux {
-    header "/usr/include/libelf/libelf.h"
-    link "linbelf"
+    header "/usr/include/libelf.h"
+    link "libelf"
     export *
 }
