@@ -6,4 +6,6 @@ public enum RuntimeError: Error {
     case couldNotGetHeader
     case couldNotGetClass
     case couldNotGetIdent
+    case couldNotFetchStringTableSectionIndex
+    case undefined
 }

@@ -7,7 +7,7 @@ final class SwiftELFTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        XCTAssertNoThrow(sut = try SwiftELF(at: TestUtilities.elfTestFilePath))
+        XCTAssertNoThrow(sut = try SwiftELF(at: TestFiles.elfLinuxLibX86.path))
     }
     
     override func tearDown() {
@@ -25,6 +25,16 @@ final class SwiftELFTests: XCTestCase {
     
     func test_prints_header() {
         XCTAssertNoThrow(try sut.printHeader())
+    }
+    
+    func test_gets_sectionNames() {
+        let sectionNames = try! sut.getSectionNames()
+        XCTAssertEqual(sectionNames, TestFiles.elfLinuxLibX86.sectionData)
+    }
+    
+    func test_get_symbolTable() {
+        let symbolTables = try! sut.getSymbolTables()
+        XCTAssertEqual(symbolTables, TestFiles.elfLinuxLibX86.symbolTables)
     }
 
     static var allTests = [
