@@ -5,13 +5,11 @@ final class SwiftELFTests: XCTestCase {
     func test_loadsElf() {
         let elf = try! SwiftELF(at: TestUtilities.elfTestFilePath)
         XCTAssertNotNil(elf)
-        elf.end()
     }
     
     func test_getKind() {
         let elf = try! SwiftELF(at: TestUtilities.elfTestFilePath)
-        XCTAssertEqual(elf.getKind(), Kind. )
-        elf.end()
+        XCTAssertEqual(elf.kind, Kind.elf)
     }
 
     static var allTests = [

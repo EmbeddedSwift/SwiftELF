@@ -6,19 +6,19 @@ import Glibc
 import ClibelfLinux
 #endif
 
-enum RuntimeError: Error {
+public enum RuntimeError: Error {
     case fileNotFound
     case invalidVersion
     case initialization
 }
 
-enum Kind {
+public enum Kind {
     case none, ar, coff, elf, num
 }
 
-struct SwiftELF {
-    private let elf: OpaquePointer
-    private let fd: Int32
+public class SwiftELF {
+    internal let elf: OpaquePointer
+    internal let fd: Int32
     
     public init(at path: String) throws {
         fd = open(path, O_RDONLY)
@@ -34,24 +34,12 @@ struct SwiftELF {
         self.elf = elf
     }
     
-    public func end() {
+    private func end() {
         elf_end(elf)
         close(fd)
     }
     
-    public func getKind() -> Kind? {
-        let kind = elf_kind(elf)
-        if kind == ELF_K_NONE {
-            return Kind.none
-        } else if kind == ELF_K_AR {
-            return .ar
-        } else if kind == ELF_K_COFF {
-            return .coff
-        } else if kind == ELF_K_ELF {
-            return .elf
-        } else if kind == ELF_K_NUM {
-            return .num
-        }
-        return nil
+    deinit {
+        end()
     }
 }
