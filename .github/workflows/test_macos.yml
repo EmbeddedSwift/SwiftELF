@@ -1,16 +1,16 @@
-name: Test
+name: Run tests on macOS
 on:
   push:
     branches:
       - main
 jobs:
   test:
-    name: Test
-    runs-on: ubuntu-latest
+    name: Test on macOS
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Install libelf
-        run: sudo apt install libelf-dev
+        run: brew install libelf
       - name: Run tests
         run: swift test
