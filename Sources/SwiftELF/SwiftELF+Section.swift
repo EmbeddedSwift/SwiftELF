@@ -20,8 +20,7 @@ public extension SwiftELF {
         
         var sectionsNames = [String: Int]()
         var scn: OpaquePointer? = nil
-        var shdr = UnsafeMutablePointer<GElf_Shdr>.allocate(capacity: 1)
-        var data = UnsafeMutablePointer<Elf_Data>.allocate(capacity: 1)
+        let shdr = UnsafeMutablePointer<GElf_Shdr>.allocate(capacity: 1)
         repeat {
             scn = elf_nextscn(elf, scn)
 
