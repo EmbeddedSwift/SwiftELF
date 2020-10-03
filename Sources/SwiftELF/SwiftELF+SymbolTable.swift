@@ -24,7 +24,7 @@ public extension SwiftELF {
         var scn: OpaquePointer? = nil
         let shdr = UnsafeMutablePointer<GElf_Shdr>.allocate(capacity: 1)
         var data = UnsafeMutablePointer<Elf_Data>.allocate(capacity: 1)
-        var count: UInt = 0
+        var count: Int = 0
 
         repeat {
             scn = elf_nextscn(elf, scn)
@@ -32,7 +32,7 @@ public extension SwiftELF {
             
             if shdr.pointee.sh_type == SHT_SYMTAB || shdr.pointee.sh_type == SHT_DYNSYM {
                 data = elf_getdata(scn, nil)
-                count = shdr.pointee.sh_size / shdr.pointee.sh_entsize
+                count = Int(shdr.pointee.sh_size / shdr.pointee.sh_entsize)
 
                 symbols[{
                     switch Int32(shdr.pointee.sh_type) {
