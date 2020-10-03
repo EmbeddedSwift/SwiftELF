@@ -1,11 +1,13 @@
 module ClibelfMac {
     header "/usr/local/include/libelf/libelf.h"
+    header "/usr/local/include/libelf/gelf.h"
     link "elf"
     export *
 }
 
 module ClibelfLinux {
     header "/usr/include/libelf.h"
+    header "/usr/include/gelf.h"
     link "elf"
     export *
 }
