@@ -11,6 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Install libelf
-        run: apt install libelf-dev
+        run: sudo apt install libelf-dev
       - name: Run tests
         run: swift test
