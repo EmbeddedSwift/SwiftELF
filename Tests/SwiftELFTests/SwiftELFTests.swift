@@ -7,7 +7,7 @@ final class SwiftELFTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = try! SwiftELF(at: TestUtilities.elfTestFilePath)
+        XCTAssertNoThrow(sut = try SwiftELF(at: TestUtilities.elfTestFilePath))
     }
     
     override func tearDown() {
@@ -24,7 +24,7 @@ final class SwiftELFTests: XCTestCase {
     }
     
     func test_prints_header() {
-        try! sut.printHeader()
+        XCTAssertNoThrow(try sut.printHeader())
     }
 
     static var allTests = [
